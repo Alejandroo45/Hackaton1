@@ -30,5 +30,5 @@ public class Company {
     private List<User> users = new ArrayList<>();
 
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
-    private List<Restriction> restrictions = new ArrayList<>();
+    private List<Restriciones> restrictions = new ArrayList<>();
 }
