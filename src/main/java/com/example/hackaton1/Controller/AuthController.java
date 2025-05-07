@@ -1,4 +1,3 @@
-// Actualización para AuthController.java
 package com.example.hackaton1.Controller;
 
 import com.example.hackaton1.entity.User;
@@ -43,20 +42,14 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody User user) {
         try {
-            // Verificar si el usuario ya existe
             if (userService.findUserByEmail(user.getEmail()).isPresent()) {
                 Map<String, String> errorResponse = new HashMap<>();
                 errorResponse.put("error", "Usuario con email " + user.getEmail() + " ya existe");
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
             }
 
-            // Encriptar la contraseña
             user.setPassword(passwordEncoder.encode(user.getPassword()));
-
-            // Guardar el usuario
             User savedUser = userService.createUser(user);
-
-            // Ocultar la contraseña en la respuesta
             savedUser.setPassword("[PROTECTED]");
 
             return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
@@ -73,12 +66,10 @@ public class AuthController {
             String email = loginRequest.get("email");
             String password = loginRequest.get("password");
 
-            // Autenticar al usuario
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(email, password)
             );
 
-            // Si la autenticación es exitosa, generar el token JWT
             final UserDetails userDetails = userDetailsService.loadUserByUsername(email);
             final String token = jwtTokenUtil.generateToken(userDetails);
 

@@ -40,16 +40,13 @@ public class UserService {
         if (userRepository.existsByEmail(user.getEmail())) {
             throw new RuntimeException("User with email already exists");
         }
-        // Aquí deberías encriptar la contraseña antes de guardarla
-        // user.setPassword(passwordEncoder.encode(user.getPassword()));
+
         return userRepository.save(user);
     }
 
     public User updateUser(Long id, User userDetails) {
         User user = getUserById(id);
         user.setName(userDetails.getName());
-        // No actualizamos el email porque es un identificador único
-        // Actualizar otros campos si es necesario
         return userRepository.save(user);
     }
 }

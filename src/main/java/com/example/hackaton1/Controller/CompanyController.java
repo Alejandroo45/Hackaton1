@@ -47,8 +47,6 @@ public class CompanyController {
 
     @GetMapping("/{id}/consumption")
     public ResponseEntity<String> getCompanyConsumption(@PathVariable Long id) {
-        // Implementar lógica para obtener el consumo de la empresa
-        // Este es un placeholder, deberías implementar la lógica real
         return ResponseEntity.ok("Reporte de consumo para la empresa ID: " + id);
     }
 }

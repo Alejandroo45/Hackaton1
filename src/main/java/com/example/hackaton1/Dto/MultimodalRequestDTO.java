@@ -6,5 +6,5 @@ import lombok.Data;
 public class MultimodalRequestDTO {
     private String prompt;
     private String modelType;
-    private String imageData; // Base64 de la imagen
+    private String imageData;
 }

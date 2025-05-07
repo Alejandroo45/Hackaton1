@@ -59,8 +59,7 @@ public class UserController {
 
     @GetMapping("/{id}/consumption")
     public ResponseEntity<String> getUserConsumption(@PathVariable Long id) {
-        // Implementar lógica para obtener el consumo del usuario
-        // Este es un placeholder, deberías implementar la lógica real
+
         return ResponseEntity.ok("Reporte de consumo para el usuario ID: " + id);
     }
 }

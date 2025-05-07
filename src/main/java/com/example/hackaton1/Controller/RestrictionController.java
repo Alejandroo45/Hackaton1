@@ -22,13 +22,11 @@ public class RestrictionController {
 
     @GetMapping
     public ResponseEntity<List<Restriciones>> getAllRestrictions() {
-        // En un sistema real, esto debería filtrar restricciones por la empresa del admin logueado
         return ResponseEntity.ok(restrictionService.getAllRestrictions());
     }
 
     @PostMapping
     public ResponseEntity<Restriciones> createRestriction(@RequestBody Restriciones restriction) {
-        // En un sistema real, deberías asignar automáticamente la empresa del admin logueado
         return new ResponseEntity<>(restrictionService.createRestriction(restriction), HttpStatus.CREATED);
     }
 

@@ -3,17 +3,7 @@
         <option name="ACTIVE_PROFILES" />
         <module name="hackaton1" />
         <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.hackaton1.Hackaton1Application" />
-        <envs>
-            <env name="DB_URL" value="$DB_URL$" />
-            <env name="DB_USERNAME" value="$DB_USERNAME$" />
-            <env name="DB_PASSWORD" value="$DB_PASSWORD$" />
-            <env name="JWT_SECRET" value="$JWT_SECRET$" />
-            <env name="OPENAI_API_KEY" value="$OPENAI_API_KEY$" />
-            <env name="ANTHROPIC_API_KEY" value="$ANTHROPIC_API_KEY$" />
-            <env name="META_API_KEY" value="$META_API_KEY$" />
-            <env name="DEEPSPEAK_API_KEY" value="$DEEPSPEAK_API_KEY$" />
-            <env name="SERVER_PORT" value="$SERVER_PORT$" />
-        </envs>
+        <option name="VM_PARAMETERS" value="-Dserver.port=8080" />
         <method v="2">
             <option name="Make" enabled="true" />
         </method>

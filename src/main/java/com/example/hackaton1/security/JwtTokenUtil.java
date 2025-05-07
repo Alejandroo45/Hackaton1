@@ -20,12 +20,10 @@ public class JwtTokenUtil {
     @Value("${jwt.secret}")
     private String secret;
 
-    // Recuperar username del token
     public String getUsernameFromToken(String token) {
         return getClaimFromToken(token, Claims::getSubject);
     }
 
-    // Recuperar fecha de expiración del token
     public Date getExpirationDateFromToken(String token) {
         return getClaimFromToken(token, Claims::getExpiration);
     }
@@ -35,24 +33,20 @@ public class JwtTokenUtil {
         return claimsResolver.apply(claims);
     }
 
-    // Para recuperar cualquier información del token necesitamos la clave secreta
     private Claims getAllClaimsFromToken(String token) {
         return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
     }
 
-    // Comprobar si el token ha expirado
     private Boolean isTokenExpired(String token) {
         final Date expiration = getExpirationDateFromToken(token);
         return expiration.before(new Date());
     }
 
-    // Generar token para el usuario
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
         return doGenerateToken(claims, userDetails.getUsername());
     }
 
-    // Generar token con claims específicos
     private String doGenerateToken(Map<String, Object> claims, String subject) {
         return Jwts.builder()
                 .setClaims(claims)
@@ -63,7 +57,6 @@ public class JwtTokenUtil {
                 .compact();
     }
 
-    // Validar token
     public Boolean validateToken(String token, UserDetails userDetails) {
         final String username = getUsernameFromToken(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));

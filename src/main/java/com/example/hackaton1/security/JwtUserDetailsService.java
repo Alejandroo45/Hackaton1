@@ -35,7 +35,6 @@ public class JwtUserDetailsService implements UserDetailsService {
     private Collection<? extends GrantedAuthority> getAuthorities(User user) {
         List<GrantedAuthority> authorities = new ArrayList<>();
 
-        // Agregar rol basado en el enum Role del usuario
         authorities.add(new SimpleGrantedAuthority(user.getRole().name()));
 
         return authorities;
