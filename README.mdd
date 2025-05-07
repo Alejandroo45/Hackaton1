@@ -1,0 +1,33 @@
+Sparky AI System
+Un sistema que permite a empresas controlar el acceso de sus usuarios a modelos de inteligencia artificial.
+¿Qué hace este proyecto?
+Este sistema permite:
+
+Que las empresas se registren
+Crear usuarios para cada empresa
+Establecer límites de uso para cada empresa y usuario
+Simular interacciones con modelos de IA como GPT-4 y Claude
+
+Tecnologías usadas
+
+Spring Boot
+PostgreSQL para la base de datos
+JWT para la autenticación
+Spring Security
+
+Cómo usar el sistema
+Para probar el sistema:
+
+Registra un usuario: POST /auth/register
+Inicia sesión: POST /auth/login
+Crea una empresa: POST /api/admin/companies
+Establece límites: POST /api/company/restrictions
+Prueba la IA: POST /api/ai/chat o POST /test/ai
+
+Endpoints principales
+
+Autenticación: /auth/register, /auth/login
+Empresas: /api/admin/companies
+Restricciones: /api/company/restrictions
+Usuarios: /api/company/users
+IA: /api/ai/chat, /test/ai
