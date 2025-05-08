@@ -15,6 +15,40 @@ PostgreSQL para la base de datos
 JWT para la autenticación
 Spring Security
 
+Configuración del proyecto
+Requisitos
+
+Java 17+
+PostgreSQL
+Maven
+
+Configuración de variables de entorno
+
+Crea un archivo .env en la raíz del proyecto basado en el archivo .env.example
+Completa las variables con tus propios valores:
+# Database Configuration
+DB_URL=jdbc:postgresql://localhost:5432/sparky
+DB_USERNAME=postgres
+DB_PASSWORD=postgres
+
+# JWT Secret Key
+JWT_SECRET=tu_clave_secreta_jwt
+
+# AI Model API Keys
+AZURE_KEY=tu_token_de_azure_aquí
+OPENAI_API_KEY=tu_token_de_openai_aquí
+ANTHROPIC_API_KEY=tu_token_de_anthropic_aquí
+META_API_KEY=tu_token_de_meta_aquí
+DEEPSPEAK_API_KEY=tu_token_de_deepspeak_aquí
+
+# Server Configuration
+SERVER_PORT=8080
+
+
+Notas para el profesor
+Para facilitar la evaluación, puedes usar este token de prueba para la variable AZURE_KEY:
+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
+Si necesitas tokens adicionales o tienes problemas para ejecutar el proyecto.
 Cómo usar el sistema
 Para probar el sistema:
 
@@ -31,3 +65,37 @@ Empresas: /api/admin/companies
 Restricciones: /api/company/restrictions
 Usuarios: /api/company/users
 IA: /api/ai/chat, /test/ai
+
+Pruebas con Postman
+El proyecto incluye una colección de Postman (Sparky_AI_System.postman_collection.json) en la raíz del repositorio. Puedes importar esta colección en Postman para probar todos los endpoints.
+Pasos para usar la colección de Postman:
+
+Importa la colección en Postman
+Ejecuta primero el endpoint de registro (Register)
+Luego ejecuta el endpoint de login para obtener un token JWT
+El token JWT se guardará automáticamente como variable de colección
+Los demás endpoints utilizarán este token automáticamente
+
+Estructura del proyecto
+El proyecto sigue una arquitectura en capas:
+
+Controllers: Manejo de peticiones HTTP
+Services: Lógica de negocio
+Repositories: Acceso a datos
+Entities: Modelos de datos
+DTOs: Objetos de transferencia de datos
+Security: Configuración de seguridad y JWT
+
+Ejecutar el proyecto
+bash# Clonar el repositorio
+git clone https://github.com/Alejandroo45/Hackaton1.git
+
+# Navegar al directorio
+cd Hackaton1
+
+# Compilar el proyecto
+mvn clean install
+
+# Ejecutar
+mvn spring-boot:run
+O puedes ejecutarlo directamente desde tu IDE favorito.
