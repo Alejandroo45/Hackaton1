@@ -4,6 +4,7 @@
         <module name="hackaton1" />
         <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.hackaton1.Hackaton1Application" />
         <option name="VM_PARAMETERS" value="-Dserver.port=8080" />
+        <option name="ENVIRONMENT_VARIABLES" value="AZURE_KEY=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" />
         <method v="2">
             <option name="Make" enabled="true" />
         </method>

@@ -29,31 +29,23 @@ public class AIService {
     private ChatCompletionsClient chatClient;
 
     public AIService() {
-        String key = System.getenv("AZURE_KEY");
+        // Usar directamente el token (solo para pruebas)
+        String key = "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";
 
-        if (key != null && !key.isEmpty()) {
-            System.out.println("AZURE_KEY encontrada, primeros 5 caracteres: " + key.substring(0, Math.min(5, key.length())));
-        } else {
-            System.out.println("AZURE_KEY NO encontrada en variables de entorno");
-        }
+        System.out.println("Usando token configurado manualmente");
 
         String endpoint = "https://models.github.ai/inference";
 
-        if (key != null && !key.isEmpty()) {
-            try {
-                System.out.println("Inicializando cliente con clave y endpoint: " + endpoint);
-                this.chatClient = new ChatCompletionsClientBuilder()
-                        .credential(new AzureKeyCredential(key))
-                        .endpoint(endpoint)
-                        .buildClient();
-                System.out.println("✅ Cliente inicializado correctamente");
-            } catch (Exception e) {
-                System.err.println("❌ Error al inicializar cliente: " + e.getMessage());
-                e.printStackTrace();
-                this.chatClient = null;
-            }
-        } else {
-            System.out.println("❌ No se pudo inicializar cliente, usando simulación");
+        try {
+            System.out.println("Inicializando cliente con token manual y endpoint: " + endpoint);
+            this.chatClient = new ChatCompletionsClientBuilder()
+                    .credential(new AzureKeyCredential(key))
+                    .endpoint(endpoint)
+                    .buildClient();
+            System.out.println("✅ Cliente inicializado correctamente");
+        } catch (Exception e) {
+            System.err.println("❌ Error al inicializar cliente: " + e.getMessage());
+            e.printStackTrace();
             this.chatClient = null;
         }
     }
@@ -76,7 +68,8 @@ public class AIService {
     }
 
     private ChatResponseDTO processRealAIRequest(ChatRequestDTO chatRequest) {
-        String model = "meta/llama-4-scout-17b-16e-instruct";
+        // Usar el modelo de Microsoft en lugar del de Meta
+        String model = "microsoft/Phi-4-Reasoning";
 
         System.out.println("🔄 Enviando solicitud al modelo: " + model);
         System.out.println("📝 Prompt: " + chatRequest.getPrompt());
