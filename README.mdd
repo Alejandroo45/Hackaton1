@@ -45,8 +45,7 @@ DEEPSPEAK_API_KEY=tu_token_de_deepspeak_aquí
 SERVER_PORT=8080
 
 
-Notas para el profesor
-Para facilitar la evaluación, puedes usar este token de prueba para la variable AZURE_KEY:
+Para facilitar puede usar este token de prueba para la variable AZURE_KEY:
 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
 Si necesitas tokens adicionales o tienes problemas para ejecutar el proyecto.
 Cómo usar el sistema
